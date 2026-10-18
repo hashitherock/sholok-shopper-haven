@@ -60,7 +60,7 @@ function ProductPage() {
             ))}
           </div>
           <div className="relative aspect-[4/5] flex-1 overflow-hidden rounded-lg bg-sand">
-            <SafeImage key={img} eager src={p.images[img]} fallback={catImage(p)} alt={p.name} width={640} height={800} className="size-full animate-in fade-in object-cover" />
+            <SafeImage key={img} eager src={p.images[img] ?? ""} fallback={catImage(p)} alt={p.name} width={640} height={800} className="size-full animate-in fade-in object-cover" />
             <WishlistButton id={p.id} className="absolute right-3 top-3 size-11" />
           </div>
         </div>

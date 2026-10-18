@@ -16,11 +16,11 @@ interface ShopState {
   wishlist: string[];
   recent: string[];
   orders: Order[];
-  voucher?: Voucher;
+  voucher?: Voucher | undefined;
   cartOpen: boolean;
   user: { name: string; email: string } | null;
   setCartOpen: (o: boolean) => void;
-  addToCart: (productId: string, qty?: number, opts?: { size?: string; color?: string; silent?: boolean }) => boolean;
+  addToCart: (productId: string, qty?: number, opts?: { size?: string | undefined; color?: string | undefined; silent?: boolean }) => boolean;
   setQty: (key: string, qty: number) => void;
   removeItem: (key: string) => void;
   clearCart: () => void;

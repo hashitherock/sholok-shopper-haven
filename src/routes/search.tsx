@@ -5,7 +5,7 @@ import { PageHero } from "@/components/shop/bits";
 import { CATEGORIES } from "@/data/categories";
 
 export const Route = createFileRoute("/search")({
-  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : "" }),
+  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s["q"] === "string" ? s["q"] : "" }),
   head: () => ({ meta: [
     { title: "Search — Sholok" },
     { name: "description", content: "Search Sholok products by name, category or keyword." },
