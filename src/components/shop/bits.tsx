@@ -22,14 +22,14 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
   useEffect(() => {
     const el = ref.current;
     if (!el || typeof IntersectionObserver === "undefined") { setShown(true); return; }
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } }, { rootMargin: "0px 0px -10% 0px" });
+    const io = new IntersectionObserver(([e]) => { if (e?.isIntersecting) { setShown(true); io.disconnect(); } }, { rootMargin: "0px 0px -10% 0px" });
     io.observe(el);
     return () => io.disconnect();
   }, []);
   return <div ref={ref} data-shown={shown} className={cn("reveal", className)} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 }
 
-export function SafeImage({ src, alt, className, fallback, eager, ...rest }: { src: string; alt: string; className?: string; fallback?: string; eager?: boolean; width?: number; height?: number }) {
+export function SafeImage({ src, alt, className, fallback, eager, ...rest }: { src: string; alt: string; className?: string; fallback?: string | undefined; eager?: boolean; width?: number; height?: number }) {
   const [s, setS] = useState(src);
   const [failed, setFailed] = useState(false);
   useEffect(() => { setS(src); setFailed(false); }, [src]);
@@ -103,7 +103,7 @@ export function Crumbs({ items }: { items: { label: string; to?: string; params?
   );
 }
 
-export function PageHero({ eyebrow, title, text, crumbs }: { eyebrow?: string; title: string; text?: string; crumbs: { label: string; to?: string; params?: Record<string, string> }[] }) {
+export function PageHero({ eyebrow, title, text, crumbs }: { eyebrow?: string | undefined; title: string; text?: string | undefined; crumbs: { label: string; to?: string; params?: Record<string, string> }[] }) {
   return (
     <div className="border-b bg-secondary/60">
       <div className="container-x py-8 md:py-12">

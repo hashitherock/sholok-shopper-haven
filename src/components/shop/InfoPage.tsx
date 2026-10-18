@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { PageHero } from "./bits";
 
-export function InfoPage({ title, eyebrow, text, children }: { title: string; eyebrow?: string; text?: string; children: ReactNode }) {
+export function InfoPage({ title, eyebrow, text, children }: { title: string; eyebrow?: string | undefined; text?: string | undefined; children: ReactNode }) {
   return (
     <>
       <PageHero title={title} eyebrow={eyebrow} text={text} crumbs={[{ label: title }]} />

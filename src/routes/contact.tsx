@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [f, setF] = useState({ name: "", email: "", msg: "" });
-  const [err, setErr] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<{ name?: string; email?: string; msg?: string }>({});
   const [sent, setSent] = useState(false);
   const cls = "w-full rounded-md border border-input bg-card px-3 py-2.5 text-sm aria-[invalid=true]:border-destructive";
   return (
@@ -30,7 +30,7 @@ function Contact() {
         {sent ? <p role="status" className="rounded-lg bg-accent p-6 text-accent-foreground">Thanks, {f.name}! In a live store we'd reply soon — this demo didn't send your message.</p> : (
           <form noValidate className="space-y-4" onSubmit={(e) => {
             e.preventDefault();
-            const x: Record<string, string> = {};
+            const x: { name?: string; email?: string; msg?: string } = {};
             if (!f.name.trim()) x.name = "Please enter your name.";
             if (!isEmail(f.email)) x.email = "Please enter a valid email.";
             if (f.msg.trim().length < 10) x.msg = "Please write at least 10 characters.";

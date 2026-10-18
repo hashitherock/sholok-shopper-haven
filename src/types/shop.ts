@@ -18,28 +18,28 @@ export interface Product {
   name: string;
   category: CategorySlug;
   price: number;
-  originalPrice?: number;
+  originalPrice?: number | undefined;
   description: string;
   features: string[];
   rating: number;
   reviews: number;
   stock: number;
   images: string[];
-  sizes?: string[];
-  colors?: string[];
+  sizes?: string[] | undefined;
+  colors?: string[] | undefined;
   keywords: string[];
   addedDaysAgo: number;
-  flash?: boolean;
-  bestSeller?: boolean;
-  trending?: boolean;
+  flash?: boolean | undefined;
+  bestSeller?: boolean | undefined;
+  trending?: boolean | undefined;
 }
 
 export interface CartItem {
   key: string;
   productId: string;
   qty: number;
-  size?: string;
-  color?: string;
+  size?: string | undefined;
+  color?: string | undefined;
 }
 
 export interface Voucher {
@@ -48,8 +48,8 @@ export interface Voucher {
   type: "percent" | "flat";
   value: number;
   minOrder: number;
-  fashionOnly?: boolean;
-  maxDiscount?: number;
+  fashionOnly?: boolean | undefined;
+  maxDiscount?: number | undefined;
 }
 
 export interface Address {
@@ -79,7 +79,7 @@ export interface Order {
   address: Address;
   delivery: DeliveryMethod;
   payment: PaymentMethod;
-  voucher?: string;
+  voucher?: string | undefined;
   totals: Totals;
   status: "Processing" | "Packed" | "Shipped";
 }
