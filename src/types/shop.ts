@@ -75,7 +75,7 @@ export interface Totals {
 export interface Order {
   id: string;
   createdAt: string;
-  items: { productId: string; name: string; price: number; qty: number; size?: string; color?: string; image: string }[];
+  items: { productId: string; name: string; price: number; qty: number; size?: string | undefined; color?: string | undefined; image: string }[];
   address: Address;
   delivery: DeliveryMethod;
   payment: PaymentMethod;
