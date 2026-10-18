@@ -56,14 +56,14 @@ function Checkout() {
     return Object.keys(e).length === 0;
   };
   const next = () => { if (step === 0 && !validate()) return; setStep((s) => s + 1); window.scrollTo({ top: 0 }); };
-  const set = (k: keyof Address, v: string) => setA((prev) => ({ ...prev, [k]: v, ...(k === "division" ? { district: DIVISIONS[v][0] } : {}) }));
+  const set = (k: keyof Address, v: string) => setA((prev) => ({ ...prev, [k]: v, ...(k === "division" ? { district: DIVISIONS[v]?.[0] ?? "" } : {}) }));
 
   const place = () => {
     if (!validate()) { setStep(0); return; }
     const id = `SHK-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
     const order: Order = {
       id, createdAt: new Date().toISOString(), address: a, delivery, payment, voucher: voucher?.code, totals: t, status: "Processing",
-      items: lines.map(({ item, product }) => ({ productId: product.id, name: product.name, price: product.price, qty: item.qty, size: item.size, color: item.color, image: product.images[0] })),
+      items: lines.map(({ item, product }) => ({ productId: product.id, name: product.name, price: product.price, qty: item.qty, size: item.size, color: item.color, image: product.images[0] ?? "" })),
     };
     placeOrder(order);
     navigate({ to: "/order/$id", params: { id } });
@@ -98,7 +98,7 @@ function Checkout() {
               <div><label htmlFor="division" className="mb-1 block text-sm font-semibold">Division</label>
                 <select id="division" value={a.division} onChange={(e) => set("division", e.target.value)} className={field}>{Object.keys(DIVISIONS).map((d) => <option key={d}>{d}</option>)}</select></div>
               <div><label htmlFor="district" className="mb-1 block text-sm font-semibold">District</label>
-                <select id="district" value={a.district} onChange={(e) => set("district", e.target.value)} className={field}>{DIVISIONS[a.division].map((d) => <option key={d}>{d}</option>)}</select></div>
+                <select id="district" value={a.district} onChange={(e) => set("district", e.target.value)} className={field}>{(DIVISIONS[a.division] ?? []).map((d) => <option key={d}>{d}</option>)}</select></div>
               <div className="sm:col-span-2"><label htmlFor="address" className="mb-1 block text-sm font-semibold">Address</label>
                 <input id="address" autoComplete="street-address" value={a.address} onChange={(e) => set("address", e.target.value)} aria-invalid={!!errors.address} aria-describedby="address-err" placeholder="House, road, area" className={field} /><Err k="address" /></div>
               <div className="sm:col-span-2"><label htmlFor="notes" className="mb-1 block text-sm font-semibold">Delivery instructions (optional)</label>
@@ -144,7 +144,7 @@ function Checkout() {
               <ul className="divide-y rounded-lg border bg-card px-4">
                 {lines.map(({ item, product }) => (
                   <li key={item.key} className="flex items-center gap-3 py-3 text-sm">
-                    <SafeImage src={product.images[0]} fallback={catImage(product)} alt="" width={56} height={56} className="size-14 rounded object-cover" />
+                    <SafeImage src={product.images[0] ?? ""} fallback={catImage(product)} alt="" width={56} height={56} className="size-14 rounded object-cover" />
                     <div className="flex-1"><p className="font-semibold">{product.name}</p><p className="text-xs text-muted-foreground">{[item.size, item.color].filter(Boolean).join(" · ")} × {item.qty}</p></div>
                     <p className="font-bold">{formatBDT(product.price * item.qty)}</p>
                   </li>

@@ -24,7 +24,7 @@ export function CartItemRow({ line, compact, onNavigate }: { line: Line; compact
   return (
     <li className="flex gap-3 py-4 animate-in fade-in">
       <Link to="/product/$id" params={{ id: p.id }} onClick={onNavigate} className="shrink-0">
-        <SafeImage src={p.images[0]} fallback={catImage(p)} alt={p.name} width={96} height={120} className={compact ? "h-24 w-20 rounded-md object-cover" : "h-32 w-26 rounded-md object-cover"} />
+        <SafeImage src={p.images[0] ?? ""} fallback={catImage(p)} alt={p.name} width={96} height={120} className={compact ? "h-24 w-20 rounded-md object-cover" : "h-32 w-26 rounded-md object-cover"} />
       </Link>
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex justify-between gap-2">

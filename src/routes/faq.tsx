@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { InfoPage } from "@/components/shop/InfoPage";
 
-const QA = [
+const QA: [string, string][] = [
   ["Is Sholok a real store?", "This is a frontend demonstration. You can browse, add to cart and place demo orders, but nothing is shipped or charged."],
   ["How are delivery charges calculated?", "Demo rates: standard ৳60 inside Dhaka division and ৳120 elsewhere; express ৳150 / ৳250. Standard delivery is free when your products total ৳3,000 or more after discounts."],
   ["Which vouchers can I use?", "Try SHOLOK10 (10% off, max ৳500), WELCOME150 (৳150 off above ৳1,500) or STYLE15 (15% off clothing & fashion). One voucher per order; vouchers never reduce delivery fees."],
