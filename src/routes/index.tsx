@@ -170,16 +170,22 @@ function Home() {
       </section>
       <Recent />
       <section className="container-x py-10">
-        <ul className="grid grid-cols-2 gap-6 border-y py-10 lg:grid-cols-4">
+        <h2 className="sr-only">Why shop with Sholok</h2>
+        <ul className="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {[
             [ShoppingBag, "Convenient shopping", "13 categories, one bag."],
             [ShieldCheck, "Secure-looking checkout", "A clear, demo checkout flow."],
             [Headphones, "Responsive support", "Illustrative help centre & FAQ."],
             [Sparkles, "Easy cart management", "Saved in your browser."],
-          ].map(([I, t, d]) => {
+          ].map(([I, t, d], i) => {
             const Icon = I as typeof ShoppingBag;
             return (
-              <li key={t as string} className="flex gap-3"><Icon aria-hidden className="size-6 shrink-0 text-primary" /><div><p className="font-semibold">{t as string}</p><p className="text-sm text-muted-foreground">{d as string}</p></div></li>
+              <li key={t as string} className="group relative bg-card p-6 transition-colors hover:bg-accent">
+                <span aria-hidden className="absolute right-5 top-4 font-display text-4xl italic text-sand transition-colors group-hover:text-primary/30">0{i + 1}</span>
+                <Icon aria-hidden className="size-6 text-primary" />
+                <p className="mt-4 font-display text-lg font-semibold">{t as string}</p>
+                <p className="text-sm text-muted-foreground">{d as string}</p>
+              </li>
             );
           })}
         </ul>
