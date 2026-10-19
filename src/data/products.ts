@@ -1,7 +1,7 @@
 import type { CategorySlug, Product } from "@/types/shop";
-import { img } from "./categories";
+import { productImg } from "./categories";
 
-// [name, price, originalPrice (0 = none), image keywords, stock, extra keywords]
+// [name, price, originalPrice (0 = none), image hint (unused), stock, extra keywords]
 type Row = [string, number, number, string, number, string];
 
 const CLOTH_SIZES = ["S", "M", "L", "XL"];
@@ -9,7 +9,7 @@ const CLOTH_SIZES = ["S", "M", "L", "XL"];
 const RAW: Record<CategorySlug, { rows: Row[]; sizes?: string[]; colors?: string[][]; features: string[] }> = {
   "womens-clothing": {
     sizes: CLOTH_SIZES,
-    colors: [["Teal", "Ivory"], ["Rose", "Navy"], ["Mustard", "Black"], ["Sage", "Maroon"], ["Sky", "White"]],
+    colors: [["Teal", "Ivory"], ["Teal", "Gold"], ["Sage", "Olive"], ["Blue", "Ivory"], ["Oat", "Grey"]],
     features: ["Breathable fabric for warm weather", "Machine washable", "Relaxed, flattering fit"],
     rows: [
       ["Nakshi Embroidered Cotton Kurti", 1850, 2400, "kurti,embroidery", 24, "kurti ethnic top"],
@@ -170,7 +170,7 @@ export const PRODUCTS: Product[] = (Object.keys(RAW) as CategorySlug[]).flatMap(
       rating: Math.round((3.8 + ((n * 37) % 12) / 10) * 10) / 10,
       reviews: 12 + ((n * 53) % 480),
       stock,
-      images: [img(kw, 100 + n), img(kw, 300 + n), img(kw, 500 + n)],
+      images: [productImg(cat, i + 1), productImg(cat, i + 1, true), productImg(cat, 6)],
       sizes,
       colors: colors?.[i],
       keywords: kws.split(" "),

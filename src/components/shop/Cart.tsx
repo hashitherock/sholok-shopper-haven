@@ -11,9 +11,9 @@ import { VOUCHERS } from "@/data/site";
 export function QtyStepper({ value, max, onChange, label }: { value: number; max: number; onChange: (n: number) => void; label: string }) {
   return (
     <div className="inline-flex items-center rounded-full border bg-card" role="group" aria-label={`Quantity for ${label}`}>
-      <button type="button" aria-label="Decrease quantity" disabled={value <= 1} onClick={() => onChange(value - 1)} className="press grid size-8 place-items-center rounded-full hover:bg-muted disabled:opacity-40"><Minus aria-hidden className="size-3.5" /></button>
+      <button type="button" aria-label="Decrease quantity" disabled={value <= 1} onClick={() => onChange(value - 1)} className="press grid size-10 place-items-center rounded-full hover:bg-muted disabled:opacity-40"><Minus aria-hidden className="size-3.5" /></button>
       <span aria-live="polite" className="w-8 text-center text-sm font-semibold tabular-nums">{value}</span>
-      <button type="button" aria-label="Increase quantity" disabled={value >= max} onClick={() => onChange(value + 1)} className="press grid size-8 place-items-center rounded-full hover:bg-muted disabled:opacity-40"><Plus aria-hidden className="size-3.5" /></button>
+      <button type="button" aria-label="Increase quantity" disabled={value >= max} onClick={() => onChange(value + 1)} className="press grid size-10 place-items-center rounded-full hover:bg-muted disabled:opacity-40"><Plus aria-hidden className="size-3.5" /></button>
     </div>
   );
 }

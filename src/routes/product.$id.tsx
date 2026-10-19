@@ -20,8 +20,6 @@ export const Route = createFileRoute("/product/$id")({
     { name: "description", content: loaderData.product.description.slice(0, 155) },
     { property: "og:title", content: loaderData.product.name },
     { property: "og:description", content: loaderData.product.description.slice(0, 155) },
-    { property: "og:image", content: loaderData.product.images[0] },
-    { name: "twitter:image", content: loaderData.product.images[0] },
   ] : [{ title: "Product unavailable — Sholok" }, { name: "robots", content: "noindex" }] }),
   notFoundComponent: () => (
     <div className="container-x py-24 text-center"><h1 className="text-3xl font-semibold">This product isn't available</h1>
@@ -49,7 +47,7 @@ function ProductPage() {
   return (
     <div className="container-x py-8">
       <Crumbs items={[{ label: cat.name, to: "/category/$slug", params: { slug: cat.slug } }, { label: p.name }]} />
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
+      <div className="grid gap-8 md:grid-cols-2 lg:gap-14">
         <div className="flex flex-col-reverse gap-3 sm:flex-row">
           <div className="flex gap-2 sm:flex-col" role="tablist" aria-label="Product images">
             {p.images.map((src, i) => (
@@ -59,8 +57,8 @@ function ProductPage() {
               </button>
             ))}
           </div>
-          <div className="relative aspect-[4/5] flex-1 overflow-hidden rounded-lg bg-sand">
-            <SafeImage key={img} eager src={p.images[img] ?? ""} fallback={catImage(p)} alt={p.name} width={640} height={800} className="size-full animate-in fade-in object-cover" />
+          <div className="relative aspect-square flex-1 overflow-hidden rounded-lg bg-sand">
+            <SafeImage key={img} eager src={p.images[img] ?? ""} fallback={catImage(p)} alt={p.name} width={600} height={600} className="size-full animate-in fade-in object-cover" />
             <WishlistButton id={p.id} className="absolute right-3 top-3 size-11" />
           </div>
         </div>

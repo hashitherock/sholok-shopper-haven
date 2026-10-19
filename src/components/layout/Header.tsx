@@ -28,7 +28,7 @@ function AccountPanel() {
   const [name, setName] = useState("");
   return (
     <Popover>
-      <PopoverTrigger aria-label="Account" className="press relative grid size-10 place-items-center rounded-full hover:bg-muted"><User aria-hidden className="size-5" /></PopoverTrigger>
+      <PopoverTrigger aria-label="Account" className="press relative grid size-11 place-items-center rounded-full hover:bg-muted"><User aria-hidden className="size-5" /></PopoverTrigger>
       <PopoverContent align="end" className="w-72">
         {user ? (
           <div className="space-y-3">
@@ -112,16 +112,16 @@ export function Header() {
       </div>
       <header className={cn("sticky top-0 z-40 border-b bg-background/90 backdrop-blur-md transition-shadow", scrolled && "shadow-soft")}>
         <div className={cn("container-x flex items-center gap-3 transition-[height] md:gap-6", scrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
-          <button type="button" aria-label="Open menu" onClick={() => setMenu(true)} className="press -ml-2 grid size-10 place-items-center rounded-full hover:bg-muted lg:hidden"><Menu aria-hidden className="size-5" /></button>
+          <button type="button" aria-label="Open menu" onClick={() => setMenu(true)} className="press -ml-2 grid size-11 place-items-center rounded-full hover:bg-muted lg:hidden"><Menu aria-hidden className="size-5" /></button>
           <Logo className="text-2xl md:text-3xl" />
           <SearchBar className="mx-auto hidden max-w-xl flex-1 md:block" />
           <div className="ml-auto flex items-center gap-0.5 md:ml-0">
-            <button type="button" aria-label="Search" onClick={() => setSearch((s) => !s)} className="press grid size-10 place-items-center rounded-full hover:bg-muted md:hidden"><Search aria-hidden className="size-5" /></button>
+            <button type="button" aria-label="Search" onClick={() => setSearch((s) => !s)} className="press grid size-11 place-items-center rounded-full hover:bg-muted md:hidden"><Search aria-hidden className="size-5" /></button>
             <div className="hidden sm:block"><AccountPanel /></div>
-            <Link to="/wishlist" aria-label={`Wishlist, ${wishlist.length} items`} className="press relative grid size-10 place-items-center rounded-full hover:bg-muted">
+            <Link to="/wishlist" aria-label={`Wishlist, ${wishlist.length} items`} className="press relative grid size-11 place-items-center rounded-full hover:bg-muted">
               <Heart aria-hidden className="size-5" /><Badge n={wishlist.length} />
             </Link>
-            <button type="button" aria-label={`Open cart, ${cartCount} items`} onClick={() => setCartOpen(true)} className="press relative grid size-10 place-items-center rounded-full hover:bg-muted">
+            <button type="button" aria-label={`Open cart, ${cartCount} items`} onClick={() => setCartOpen(true)} className="press relative grid size-11 place-items-center rounded-full hover:bg-muted">
               <ShoppingBag aria-hidden className="size-5" /><Badge n={cartCount} />
             </button>
           </div>
