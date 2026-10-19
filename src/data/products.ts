@@ -9,7 +9,7 @@ const CLOTH_SIZES = ["S", "M", "L", "XL"];
 const RAW: Record<CategorySlug, { rows: Row[]; sizes?: string[]; colors?: string[][]; features: string[] }> = {
   "womens-clothing": {
     sizes: CLOTH_SIZES,
-    colors: [["Teal", "Ivory"], ["Rose", "Navy"], ["Mustard", "Black"], ["Sage", "Maroon"], ["Sky", "White"]],
+    colors: [["Teal", "Ivory"], ["Teal", "Gold"], ["Sage", "Olive"], ["Blue", "Ivory"], ["Oat", "Grey"]],
     features: ["Breathable fabric for warm weather", "Machine washable", "Relaxed, flattering fit"],
     rows: [
       ["Nakshi Embroidered Cotton Kurti", 1850, 2400, "kurti,embroidery", 24, "kurti ethnic top"],

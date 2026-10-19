@@ -47,7 +47,7 @@ function ProductPage() {
   return (
     <div className="container-x py-8">
       <Crumbs items={[{ label: cat.name, to: "/category/$slug", params: { slug: cat.slug } }, { label: p.name }]} />
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
+      <div className="grid gap-8 md:grid-cols-2 lg:gap-14">
         <div className="flex flex-col-reverse gap-3 sm:flex-row">
           <div className="flex gap-2 sm:flex-col" role="tablist" aria-label="Product images">
             {p.images.map((src, i) => (
