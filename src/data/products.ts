@@ -1,7 +1,7 @@
 import type { CategorySlug, Product } from "@/types/shop";
-import { img } from "./categories";
+import { productImg } from "./categories";
 
-// [name, price, originalPrice (0 = none), image keywords, stock, extra keywords]
+// [name, price, originalPrice (0 = none), image hint (unused), stock, extra keywords]
 type Row = [string, number, number, string, number, string];
 
 const CLOTH_SIZES = ["S", "M", "L", "XL"];
@@ -170,7 +170,7 @@ export const PRODUCTS: Product[] = (Object.keys(RAW) as CategorySlug[]).flatMap(
       rating: Math.round((3.8 + ((n * 37) % 12) / 10) * 10) / 10,
       reviews: 12 + ((n * 53) % 480),
       stock,
-      images: [img(kw, 100 + n), img(kw, 300 + n), img(kw, 500 + n)],
+      images: [productImg(cat, i + 1), productImg(cat, i + 1, true), productImg(cat, 6)],
       sizes,
       colors: colors?.[i],
       keywords: kws.split(" "),
