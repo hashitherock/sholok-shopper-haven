@@ -13,9 +13,9 @@ export function ProductCard({ p, className }: { p: Product; className?: string }
   const out = p.stock <= 0;
   return (
     <article className={cn("group relative flex flex-col", className)}>
-      <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-sand">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-sand">
         <Link to="/product/$id" params={{ id: p.id }} aria-label={p.name} className="block size-full">
-          <SafeImage src={p.images[0] ?? ""} fallback={catImage(p)} alt={p.name} width={640} height={800}
+          <SafeImage src={p.images[0] ?? ""} fallback={catImage(p)} alt={p.name} width={600} height={600}
             className={cn("size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]", out && "opacity-60 grayscale")} />
         </Link>
         <div className="pointer-events-none absolute left-2.5 top-2.5 flex flex-col items-start gap-1.5">
